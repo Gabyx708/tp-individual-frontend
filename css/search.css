@@ -1,0 +1,10 @@
+section .input-group{
+    margin: auto;
+    width: 50%;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

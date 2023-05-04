@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+  --color-header: #FFBC0D;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+main .card{
+  margin: 20px;
+  padding: 4%;
+  text-align: center;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+main .card .btn{
+  transition: all 0.3s ease;
+  transition-delay: 0.2s;
+}
+
+main .card .btn:hover{
+  width: 110%;
+  color: black;
+  background-color: green;
+}

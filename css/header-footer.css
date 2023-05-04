@@ -1,0 +1,23 @@
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-header) ;
+    padding: 1%;
+    margin-bottom: 20px;
+  }
+  
+  header #icono{
+    width: 100px;
+    margin-right: 10px;
+  }
+  
+  footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100px;
+    background-color: var(--color-header);
+    padding: 10px;
+  }
