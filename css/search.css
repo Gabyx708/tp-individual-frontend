@@ -4,7 +4,13 @@ section .input-group{
 }
 
 section {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
+}
+
+section div{
+  width: 80%;
+  margin: auto;
 }
