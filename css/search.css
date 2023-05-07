@@ -14,3 +14,41 @@ section div{
   width: 80%;
   margin: auto;
 }
+
+
+ul {
+  list-style: none;
+}
+
+
+.imagenComida{
+  width: 80px;
+  border-radius: 15%;
+  border-image: 100px
+}
+
+.tarjetaComanda{
+ width: 70%;
+ margin-bottom: 10%;
+}
+
+
+.tarjetaComanda .card-body{
+  width: 100%;
+  border-radius: 10px;
+  font-size: 20px;
+  box-shadow: 1px 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tarjetaComanda .card-body button{
+  float: right;
+}
+
+.tarjetaComanda .card-body span{
+  padding: 2%;
+  font-size: 20px;
+}
+
+.table{
+  text-align: center;
+}

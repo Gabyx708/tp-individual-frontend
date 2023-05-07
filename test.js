@@ -10,6 +10,8 @@ const input = document.getElementById("busqueda");
 btnBusqueda.addEventListener('click', async function() {
     let id = input.value;
     let comanda = await Comanda.Get(id);
+    document.getElementsByClassName("input-group")[0].style.display = 'none';
+    
     const tarjeta = section.getElementsByClassName("tarjetaComanda");
   
     if (tarjeta.length > 0) {
