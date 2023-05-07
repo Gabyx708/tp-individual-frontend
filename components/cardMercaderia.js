@@ -1,12 +1,21 @@
 export default function mercaderiaCard(mercaderiaData){
-    return (
-      '<div class="card" style="width: 1fr">' +
-      '<img src="' + mercaderiaData.imagen + '" class="card-img-top" alt="...">' +
-      '<div class="card-body">' +
-        '<h5 class="card-text">' + mercaderiaData.nombre + '</h5>' +
-        '<p class="card-text">$' + mercaderiaData.precio + '</p>' +
-      '</div>' +
-    '</div>'
-    )
+
+const card = document.createElement('div');
+card.setAttribute('class', 'card');
+
+const cardHeader = document.createElement('div');
+cardHeader.setAttribute('class', 'card-header')
+cardHeader.textContent =  mercaderiaData.nombre;
+
+const cardBody = document.createElement('div');
+cardBody.setAttribute('class', 'card-body');
+
+card.appendChild(cardHeader);
+card.appendChild(cardBody);
+
+
+    return card;
   }
+  
+  
   

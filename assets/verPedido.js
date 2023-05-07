@@ -1,8 +1,7 @@
-import Comanda from './Services/getComanda.js'
-import comandaCard from './components/cardComanda.js'
+import Comanda from '../Services/getComanda.js'
+import comandaCard from '../components/cardComanda.js'
 
 let btnBusqueda = document.getElementsByClassName("paloma")[0];
-let pedido = ""
 let section = document.getElementsByTagName('section')[0];
 const input = document.getElementById("busqueda");
 

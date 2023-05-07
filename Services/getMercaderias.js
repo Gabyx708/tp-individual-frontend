@@ -1,6 +1,6 @@
-import {apiUrl} from '../config/config'
+import {apiUrl} from '../config/config.js'
 
-const urlAllMercaderias = `${apiUrl}api/v1/Mercaderia`;
+const urlAllMercaderias = `${apiUrl}/api/v1/Mercaderia`;
 
 const getMercaderias = async () => {
     let result = []

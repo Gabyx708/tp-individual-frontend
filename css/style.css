@@ -7,16 +7,28 @@
   --color-header: #FFBC0D;
 }
 
+
 main{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
     justify-content: center;
+    height: 100%;
 }
 
 main .card{
   margin: 20px;
-  padding: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  height: 100%;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+main .card img{
+ width: 150px;
+ margin: 10%;
 }
 
 main .card .btn{
@@ -25,7 +37,6 @@ main .card .btn{
 }
 
 main .card .btn:hover{
-  width: 110%;
   color: black;
   background-color: green;
 }

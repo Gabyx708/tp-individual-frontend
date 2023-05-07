@@ -1,23 +1,51 @@
-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-header) ;
-    padding: 1%;
-    margin-bottom: 20px;
-  }
-  
-  header #icono{
-    width: 100px;
-    margin-right: 10px;
-  }
-  
-  footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 50px;
-    background-color: var(--color-header);
-    padding: 10px;
-  }
+header {
+  display: grid;
+  align-items: center;
+  align-items: center;
+  background-color: var(--color-header);
+  padding: 1%;
+  margin-bottom: 20px;
+}
+
+header div {
+  margin: auto;
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+
+header #icono {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.icons-menu {
+  color: white;
+  font-size: 30px;
+  margin-top: auto;
+}
+
+a{
+ text-decoration: none;
+ margin: 0px 20px 0px 20px;
+ color: white; 
+}
+
+.icons-menu a:hover {
+  color: white; 
+}
+
+.icons-menu a:active {
+  color: white;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  background-color: var(--color-header);
+  padding: 10px;
+}
