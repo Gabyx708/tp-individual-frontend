@@ -7,5 +7,5 @@ let allMercaderias = await Mercaderia.Get();
 let section = document.getElementById("menu");
 
 allMercaderias.forEach(mercaderia => {
-    section.appendChild(mercaderiaCard(mercaderia));
+    section.innerHTML += mercaderiaCard(mercaderia);
 });
