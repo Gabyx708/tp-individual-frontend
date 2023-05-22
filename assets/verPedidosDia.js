@@ -6,9 +6,14 @@ const cargarPedidosDia = async  function (fechaDeHoy){
     let pedidos = await FechaComanda.GetByFecha(fechaDeHoy);
     let section = document.getElementById('comandas');
 
-    pedidos.forEach(pedido => {
-        section.innerHTML +=  comandaCard(pedido);
-    }); 
+    if(pedidos == null || pedidos.length === 0){
+        section.innerHTML  += `<h2 class="message_pedidos">Ups! parece que aun no hay pedidos hoy :(</h2>`;
+    }
+
+        pedidos.forEach(pedido => {
+            section.innerHTML +=  comandaCard(pedido);
+        });
+    
 
 }
 

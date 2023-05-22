@@ -20,25 +20,29 @@ header #icono {
   margin-right: 10px;
 }
 
-.icons-menu {
+header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+}
+
+li {
+  float:left;
+}
+
+li a {
+  display: block;
   color: white;
-  font-size: 30px;
-  margin-top: auto;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-a{
- text-decoration: none;
- margin: 0px 20px 0px 20px;
- color: white; 
+li a:hover {
+  background-color: #111;
 }
 
-.icons-menu a:hover {
-  color: white; 
-}
-
-.icons-menu a:active {
-  color: white;
-}
 
 footer {
   text-align: center;
