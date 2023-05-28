@@ -7,37 +7,77 @@ let allMercaderias = await Mercaderia.Get();
 
 let section = document.getElementById("menu");
 
+//mercaderias del pedido
+let pedidoMercaderia = [];
+
 allMercaderias.forEach(mercaderia => {
     section.innerHTML += mercaderiaCard(mercaderia);
 });
 
+var tipos = document.querySelectorAll('.tipo');
 
-const btnPedir = document.querySelectorAll(".btn-mercaderia");
+tipos.forEach(button => {
+  button.addEventListener('click',async e => {
+    e.preventDefault();
+    section.innerHTML = '';
+    allMercaderias = [];
+    allMercaderias = await Mercaderia.Get(button.getAttribute("value"));
+
+    allMercaderias.forEach(mercaderia => {
+      section.innerHTML += mercaderiaCard(mercaderia);
+  });
+
+  });
+})
+
+
+//asignar evento click a todos los botones
+section.addEventListener('click', async (e) =>{
+  if (e.target.classList.contains('btn-mercaderia')) {
+
+    const mercaderiaId = e.target.getAttribute('mercaderia-id');
+    let precio = allMercaderias[1].precio;
+    pedidoMercaderia.push(mercaderiaId);
+    btnConfirmarPedido.innerHTML = `<i class="fa-solid fa-basket-shopping"></i>Pedido ${pedidoMercaderia.length}`;
+    console.log(pedidoMercaderia);
+  }
+})
+
+
+//const btnPedir = document.querySelectorAll(".btn-mercaderia");
 const mercaderiaInfo = document.querySelectorAll('.mercaderia-item');
 const btnConfirmarPedido = document.getElementById('btn-pedido');
 
-//mercaderias del pedido
-let pedidoMercaderia = [];
-
-btnPedir.forEach(button => {
-    button.addEventListener("click", e => {
-      const mercaderiaId = button.getAttribute("mercaderia-id")
-      pedidoMercaderia.push(mercaderiaId);
-      btnConfirmarPedido.innerHTML = `Confirmar Pedido ${pedidoMercaderia.length}`;
-
-      // Resto de tu código para ese botón específico
-      console.log(pedidoMercaderia);
-    });
-  });
-
-  btnConfirmarPedido.addEventListener('click',e =>{
-    
-    if(pedidoMercaderia.length == 0){alert("primero tienes que pedir algo")}
-
-    Pedido.Pedir(pedidoMercaderia,1);
-    alert("pedido realizado!");
+btnConfirmarPedido.addEventListener('click',async e =>{
+  
+  if(pedidoMercaderia.length == 0)
+  {
+    alert("primero tienes que pedir algo")
+  }else{
+    const respuesta = await Pedido.Pedir(pedidoMercaderia,1);
+    alert("pedido realizado! codigo: "+respuesta.id);
     pedidoMercaderia = []
     location.reload();
+  }
+
+})
+
+
+
+//logica del pedido
+
+ btnConfirmarPedido.addEventListener('click',async e =>{
+    
+    if(pedidoMercaderia.length == 0)
+    {
+      alert("primero tienes que pedir algo")
+    }else{
+      const respuesta = await Pedido.Pedir(pedidoMercaderia,1);
+      alert("pedido realizado! codigo: "+respuesta.id);
+      pedidoMercaderia = []
+      location.reload();
+    }
+  
 })
 
 

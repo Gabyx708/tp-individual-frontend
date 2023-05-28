@@ -1,17 +1,18 @@
+
 header {
   display: grid;
   align-items: center;
   align-items: center;
   background-color: var(--color-header);
-  padding: 1%;
-  margin-bottom: 20px;
+  width: 100%;
 }
 
 header div {
   margin: auto;
   display: flex;
-  margin-bottom: 10px;
+
   align-items: center;
+  padding: 1%;
 }
 
 
@@ -22,13 +23,11 @@ header #icono {
 
 header ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
   background-color: #333;
-}
-
-li {
-  float:left;
+  margin: 0; 
+  padding: 0;
+  display: flex;
+  justify-content: center; 
 }
 
 li a {
@@ -37,6 +36,7 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  font-size: 15pt;
 }
 
 li a:hover {

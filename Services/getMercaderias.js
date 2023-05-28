@@ -1,10 +1,16 @@
 import {apiUrl} from '../config/config.js'
 
-const urlAllMercaderias = `${apiUrl}/api/v1/Mercaderia`;
+let urlAllMercaderias = `${apiUrl}/api/v1/Mercaderia`;
 
-const getMercaderias = async () => {
+const getMercaderias = async (tipo) => {
     let result = []
-    let response = await fetch(urlAllMercaderias)
+    let url = urlAllMercaderias;
+
+    if(tipo != null){
+        url = `${urlAllMercaderias}?tipo=${tipo}`
+    }
+
+    let response = await fetch(url)
             if(response.ok){
                 result = await response.json();
             }   

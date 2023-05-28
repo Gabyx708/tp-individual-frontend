@@ -1,8 +1,10 @@
 #btn-pedido{
-    border-radius: 20px;
-    margin-left: 200px;
+  border-radius: 10px;
+  font-size: 30px;
+  margin-left: 300px;
 }
 
+
 #btn-pedido:hover{
-    background-color: red;
+    background-color: green;
 }

@@ -23,7 +23,7 @@ const hacerPedido = async (listaMercaderias , formaEntrega) =>{
         }
     
         const responseData = await response.json();
-        console.log('Respuesta:', responseData);
+        return responseData;
         // Procesar la respuesta aquí
     
       } catch (error) {
