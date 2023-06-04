@@ -33,26 +33,59 @@ section{
   }
   
   /*--menu de opciones--*/
-  .menu-options{
+  .menu-contenedor {
     display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
     justify-content: center;
+    background-color: #333333;
+  }
+
+  .menu-options{
+
+    margin-right: 10px;
     list-style: none;
     font-size: 30px;
-    margin: auto;
-    background-color: #333333;
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .menu-options li {
-    display: inline;
+    margin-right: 10px;
+    display: inline-block;
   }
 
 
   .menu-options li a{
   text-decoration: none;
+  height: 100%;
   color: #fff;
+  border-radius: 20px;
   }
 
   .menu-options li a:hover {
     background-color: green;
+    cursor: pointer;
+  }
+
+  /* boton pedido */
+
+  #btn-pedido{
+    background-color: #fff;
+    border-radius: 30px;
+    font-size: 15pt;
+    padding: 20px;
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+    transition: all 0.3s;
+    
+  }
+
+ .btn-pedido :hover{
+     color: var(--color-header);
+     font-size: 40pt;
+     width: 110%;
   }

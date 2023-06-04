@@ -1,8 +1,10 @@
+import cardPedido from '../components/cardPedido.js';
 import Mercaderia from '../Services/getMercaderias.js'
 import MercaderiaDetalle from '../components/cardMercaderiaDetalle.js';
 import mercaderiaCard from '../components/cardMercaderia.js';
 import Pedido from '../Services/postComanda.js';
 import mercaderiaDetalle from '../components/cardMercaderiaDetalle.js';
+
 
 let allMercaderias = await Mercaderia.Get();
 
@@ -69,14 +71,35 @@ section.addEventListener("click", async (e) => {
 
 btnConfirmarPedido.addEventListener('click',async e =>{
   
+  let modalPedidoContainer = document.getElementById("modal-container-pedido");
+  let modalPedido = document.getElementById("modal-pedido");
+  let closePedido = document.getElementById("close-pedido");
+
   if(pedidoMercaderia.length == 0)
   {
     alert("primero tienes que pedir algo")
   }else{
-    const respuesta = await Pedido.Pedir(pedidoMercaderia,1);
-    alert("pedido realizado! codigo: "+respuesta.id);
-    pedidoMercaderia = []
-    location.reload();
+
+    //hacer visible
+    modalPedidoContainer.style.display = "flex";
+;
+    const divPedido = document.createElement('div');
+    divPedido.innerHTML = await cardPedido(pedidoMercaderia);
+    const pintar = divPedido.firstElementChild;
+    modalPedido.appendChild(pintar);
+    //modalPedido.innerHTML = cardPedido(pedidoMercaderia);
+
+    closePedido.addEventListener("click",()=>{
+      modalPedido.removeChild(pintar);
+      modalPedidoContainer.style.display = "none";
+      
+      pedidoMercaderia = []
+
+    btnConfirmarPedido.innerHTML = `<i class="fa-solid fa-basket-shopping"></i>Pedido ${pedidoMercaderia.length}`;
+    })
+    //const respuesta = await Pedido.Pedir(pedidoMercaderia,1);
+    //alert("pedido realizado! codigo: "+respuesta.id);
+    //location.reload();
   }
 
 })
