@@ -1,6 +1,6 @@
 import FechaComanda from "../Services/getComandaByFecha.js";
 import Comanda from "../Services/getComanda.js";
-import comandaCard from '../components/cardComanda.js'
+import comandaCardHoy from '../components/cardComandaHoy.js'
 
 const cargarPedidosDia = async  function (fechaDeHoy){
 
@@ -14,7 +14,7 @@ const cargarPedidosDia = async  function (fechaDeHoy){
         pedidos.forEach(async pedido => {
 
             const dataComanda = await Comanda.Get(pedido.id);
-            section.innerHTML +=  comandaCard(dataComanda);
+            section.innerHTML +=  comandaCardHoy(dataComanda);
         });
     
 

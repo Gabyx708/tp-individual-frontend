@@ -12,6 +12,7 @@ btnBusqueda.addEventListener('click', async function() {
     document.getElementsByClassName("input-group")[0].style.display = 'none';
     
     const tarjeta = section.getElementsByClassName("tarjetaComanda");
+
   
     if (tarjeta.length > 0) {
         tarjeta[0].innerHTML = comandaCard(comanda);

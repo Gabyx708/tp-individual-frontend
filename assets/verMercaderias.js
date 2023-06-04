@@ -36,7 +36,6 @@ section.addEventListener('click', async (e) =>{
   if (e.target.classList.contains('btn-mercaderia')) {
 
     const mercaderiaId = e.target.getAttribute('mercaderia-id');
-    let precio = allMercaderias[1].precio;
     pedidoMercaderia.push(mercaderiaId);
     btnConfirmarPedido.innerHTML = `<i class="fa-solid fa-basket-shopping"></i>Pedido ${pedidoMercaderia.length}`;
     console.log(pedidoMercaderia);
@@ -60,24 +59,6 @@ btnConfirmarPedido.addEventListener('click',async e =>{
     location.reload();
   }
 
-})
-
-
-
-//logica del pedido
-
- btnConfirmarPedido.addEventListener('click',async e =>{
-    
-    if(pedidoMercaderia.length == 0)
-    {
-      alert("primero tienes que pedir algo")
-    }else{
-      const respuesta = await Pedido.Pedir(pedidoMercaderia,1);
-      alert("pedido realizado! codigo: "+respuesta.id);
-      pedidoMercaderia = []
-      location.reload();
-    }
-  
 })
 
 
