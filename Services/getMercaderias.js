@@ -17,8 +17,21 @@ const getMercaderias = async (tipo) => {
         return result;
 }
 
+const getById = async (id) =>{
+    let result = null;
+    let url = urlAllMercaderias+`/${id}`;
+
+    let response = await fetch(url)
+    if(response.ok){
+        result = await response.json();
+    }   
+return result;
+
+}
+
 const Mercaderia = {
-    Get : getMercaderias
+    Get : getMercaderias,
+    ById : getById
 }
 
 export default Mercaderia;

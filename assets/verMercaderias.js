@@ -1,7 +1,8 @@
 import Mercaderia from '../Services/getMercaderias.js'
-import cardMercaderia from '../components/cardMercaderia.js'
+import MercaderiaDetalle from '../components/cardMercaderiaDetalle.js';
 import mercaderiaCard from '../components/cardMercaderia.js';
 import Pedido from '../Services/postComanda.js';
+import mercaderiaDetalle from '../components/cardMercaderiaDetalle.js';
 
 let allMercaderias = await Mercaderia.Get();
 
@@ -10,6 +11,7 @@ const mercaderiaInfo = document.querySelectorAll('.mercaderia-item');
 const btnConfirmarPedido = document.getElementById('btn-pedido');
 const btnsMercaderia = document.getElementsByClassName('btn-detalle');
 const modal = document.getElementById("modal-container");
+const modalMercaderia = document.getElementById("modal-mercaderia");
 
 //mercaderias del pedido
 let pedidoMercaderia = [];
@@ -48,21 +50,22 @@ section.addEventListener('click', async (e) =>{
 })
 
 
-section.addEventListener("click",async (e)=>{
-  if (e.target.classList.contains('btn-detalle')) {
-
-    const mercaderiaId = e.target.getAttribute('mercaderia-id');
-
+section.addEventListener("click", async (e) => {
+  if (e.target.classList.contains("btn-detalle")) {
+    const mercaderiaId = e.target.getAttribute("mercaderia-id");
+    const mercaderiaMostrar = await Mercaderia.ById(mercaderiaId);
     modal.style.display = "flex";
-    console.log(mercaderiaId);
+    modalMercaderia.innerHTML = mercaderiaDetalle(mercaderiaMostrar);
+    console.log(mercaderiaMostrar);
+
+    const btnClose = document.getElementById("close");
+
+    btnClose.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
   }
-})
+});
 
-const btnClose = document.getElementById("close");
-
-btnClose.addEventListener("click", ()=>{
-  modal.style.display = "none";
-})
 
 btnConfirmarPedido.addEventListener('click',async e =>{
   
