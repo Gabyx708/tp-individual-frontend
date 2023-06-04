@@ -74,6 +74,8 @@ btnConfirmarPedido.addEventListener('click',async e =>{
   let modalPedidoContainer = document.getElementById("modal-container-pedido");
   let modalPedido = document.getElementById("modal-pedido");
   let closePedido = document.getElementById("close-pedido");
+  let cancelPedido = document.getElementById("cancel-pedido");
+  let okPedido = document.getElementById("ok-pedido");
 
   if(pedidoMercaderia.length == 0)
   {
@@ -87,19 +89,29 @@ btnConfirmarPedido.addEventListener('click',async e =>{
     divPedido.innerHTML = await cardPedido(pedidoMercaderia);
     const pintar = divPedido.firstElementChild;
     modalPedido.appendChild(pintar);
-    //modalPedido.innerHTML = cardPedido(pedidoMercaderia);
+    
+
+    cancelPedido.addEventListener("click",()=>{
+        
+      var opcion = confirm("estas a punto de cancelar tu pedido! estas seguro?");
+
+      if(opcion == true){
+          location.reload();
+      }
+
+    });
 
     closePedido.addEventListener("click",()=>{
       modalPedido.removeChild(pintar);
       modalPedidoContainer.style.display = "none";
-      
-      pedidoMercaderia = []
-
-    btnConfirmarPedido.innerHTML = `<i class="fa-solid fa-basket-shopping"></i>Pedido ${pedidoMercaderia.length}`;
     })
-    //const respuesta = await Pedido.Pedir(pedidoMercaderia,1);
-    //alert("pedido realizado! codigo: "+respuesta.id);
-    //location.reload();
+
+    okPedido.addEventListener("click",async ()=>{
+        const respuesta = await Pedido.Pedir(pedidoMercaderia,1);
+    alert("pedido realizado! codigo: "+respuesta.id);
+    location.reload();
+    })
+   
   }
 
 })
