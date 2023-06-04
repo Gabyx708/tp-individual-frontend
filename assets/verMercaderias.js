@@ -9,6 +9,7 @@ let section = document.getElementById("menu");
 const mercaderiaInfo = document.querySelectorAll('.mercaderia-item');
 const btnConfirmarPedido = document.getElementById('btn-pedido');
 const btnsMercaderia = document.getElementsByClassName('btn-detalle');
+const modal = document.getElementById("modal-container");
 
 //mercaderias del pedido
 let pedidoMercaderia = [];
@@ -51,11 +52,17 @@ section.addEventListener("click",async (e)=>{
   if (e.target.classList.contains('btn-detalle')) {
 
     const mercaderiaId = e.target.getAttribute('mercaderia-id');
+
+    modal.style.display = "flex";
     console.log(mercaderiaId);
   }
 })
 
+const btnClose = document.getElementById("close");
 
+btnClose.addEventListener("click", ()=>{
+  modal.style.display = "none";
+})
 
 btnConfirmarPedido.addEventListener('click',async e =>{
   
