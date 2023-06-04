@@ -6,10 +6,14 @@ import Pedido from '../Services/postComanda.js';
 let allMercaderias = await Mercaderia.Get();
 
 let section = document.getElementById("menu");
+const mercaderiaInfo = document.querySelectorAll('.mercaderia-item');
+const btnConfirmarPedido = document.getElementById('btn-pedido');
+const btnsMercaderia = document.getElementsByClassName('btn-detalle');
 
 //mercaderias del pedido
 let pedidoMercaderia = [];
 
+//pintar las tarjetas en pantalla
 allMercaderias.forEach(mercaderia => {
     section.innerHTML += mercaderiaCard(mercaderia);
 });
@@ -43,9 +47,15 @@ section.addEventListener('click', async (e) =>{
 })
 
 
-//const btnPedir = document.querySelectorAll(".btn-mercaderia");
-const mercaderiaInfo = document.querySelectorAll('.mercaderia-item');
-const btnConfirmarPedido = document.getElementById('btn-pedido');
+section.addEventListener("click",async (e)=>{
+  if (e.target.classList.contains('btn-detalle')) {
+
+    const mercaderiaId = e.target.getAttribute('mercaderia-id');
+    console.log(mercaderiaId);
+  }
+})
+
+
 
 btnConfirmarPedido.addEventListener('click',async e =>{
   

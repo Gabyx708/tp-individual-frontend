@@ -10,7 +10,7 @@ export default function mercaderiaCard(mercaderiaData){
       <p class="card-text">${mercaderiaData.tipo.descripcion}</p>
       <h4 class="card-text">$${mercaderiaData.precio}</h4>
       <button class="btn btn-primary btn-mercaderia"  mercaderia-id="${mercaderiaData.id}" >Agregar</button>
-      <button class="btn btn-warning "  mercaderia-id="${mercaderiaData.id}" >Ver detalle</button>
+      <button class="btn btn-warning  btn-detalle"  mercaderia-id="${mercaderiaData.id}" >Ver detalle</button>
     </div>
   </div>
 `;
