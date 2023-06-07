@@ -1,0 +1,26 @@
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8%;
+  }
+  
+  .container-image-history,
+  .container-history {
+    flex: 1;
+  }
+  
+  .container-image-history img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+  
+  .container-history {
+    padding: 0 20px;
+  }
+  
+  .historia {
+    font-size: 20pt;
+  }
+  

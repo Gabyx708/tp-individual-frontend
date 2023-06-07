@@ -8,9 +8,9 @@ h1{
 }
 
 .card{
-    width: 1000px;
+    width: 80%;
     margin: auto;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 .card-body{
@@ -22,13 +22,13 @@ section{
     margin-bottom: 200px;
 }
 
-.label-comanda{
-    
-    font-family: "Roboto";
-    padding: 0%;
-    border-radius: 20px;
-    float: left;
-    margin-left: 20px;
-    background-color: var(--color-header);
+
+.badge{
+    float: right;
+}
+
+thead,
+tbody{
+    text-align: left;
 }
 

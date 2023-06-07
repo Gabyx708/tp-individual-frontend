@@ -1,0 +1,42 @@
+section{
+    padding: 10%;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+section h3{
+    padding: 2%;
+}
+
+/*---tarjeta----*/
+
+.tarjetaComanda{
+    width: 100%;
+    padding: 1%;
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.tarjetaComanda .badge{
+    float: right;
+    font-size: 15pt;
+}
+
+.tarjetaComanda .label-comanda{
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    padding: 0.5%;
+    background-color: var(--color-header);
+    font-weight: bolder;
+    float: left;
+}
+
+.tarjetaComanda img{
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+    margin: auto;
+}

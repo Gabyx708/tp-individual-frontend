@@ -28,17 +28,33 @@
 
   <div class="modal-container-pedido" id="modal-container-pedido">
     <div class="modal-pedido" id="modal-pedido">
-      <h2>MI PEDIDO</h2>
-      <button id="close-pedido" class="btn btn-info">cerrar</button>
-      <button id="cancel-pedido" class="btn btn-danger">cancelar</button>
-      <button id="ok-pedido" class="btn btn-success">pedir</button>
+      <h2>MI PEDIDO </h2>
+      <hr>
+      <div id="botones-container">
+
+        <div id="forma-entrega-container">
+          <label for="">Forma de entrega: </label>
+          <select id="forma-entrega">
+            <option value="1">salon</option>
+            <option value="3">pedidos ya</option>
+            <option value="2">delivery</option>
+          </select>
+        </div>
+
+        <div id="options-container">
+          <button id="close-pedido" class="btn bg-info">cerrar</button>
+          <button id="cancel-pedido" class="btn bg-danger">cancelar</button>
+          <button id="ok-pedido" class="btn bg-success">confirma pedido</button>
+        </div>
+        
+      
+    </div>
     </div>                 
 </div>
 
     <div class="menu-contenedor">
 
       <ul class="menu-options">
-        <li><a class="tipo"><i class="fa-solid fa-arrows-up-down"></i></a></li>
         <li><a class="tipo">Todos</a></li>
         <li><a class="tipo" value="1">Entrada</a></li>
         <li><a class="tipo" value="2">Minutas</a></li>

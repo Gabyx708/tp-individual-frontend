@@ -76,6 +76,7 @@ btnConfirmarPedido.addEventListener('click',async e =>{
   let closePedido = document.getElementById("close-pedido");
   let cancelPedido = document.getElementById("cancel-pedido");
   let okPedido = document.getElementById("ok-pedido");
+  let formaEntrega = document.getElementById("forma-entrega");
 
   if(pedidoMercaderia.length == 0)
   {
@@ -95,7 +96,7 @@ btnConfirmarPedido.addEventListener('click',async e =>{
         
       var opcion = confirm("estas a punto de cancelar tu pedido! estas seguro?");
 
-      if(opcion == true){
+      if(opcion === true){
           location.reload();
       }
 
@@ -107,9 +108,11 @@ btnConfirmarPedido.addEventListener('click',async e =>{
     })
 
     okPedido.addEventListener("click",async ()=>{
-        const respuesta = await Pedido.Pedir(pedidoMercaderia,1);
-    alert("pedido realizado! codigo: "+respuesta.id);
-    location.reload();
+
+        let entregaElegida = formaEntrega.value;
+        const respuesta = await Pedido.Pedir(pedidoMercaderia,entregaElegida);
+        alert("pedido realizado! codigo: "+respuesta.id);
+        location.reload();
     })
    
   }

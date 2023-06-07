@@ -8,13 +8,14 @@ export default function comandaHoy(comandaData){
       return (
           '<div class="card tarjetaComanda">' +
           '<div class="card-body">' +
-            '<table class="table table-bordered">'+
-            '<span class="label-comanda">codigo: '+comandaData.id+'</span>'+
+          '<span class="label-comanda">codigo: '+comandaData.id+'</span>'+
             '<span class="label-comanda">fecha: '+comandaData.fecha+'</span>'+
-            '<thead><tr><th scope="col">Descripcion</th><th scope="col">precio</th></tr></thead>'+
+            '<span class="label-comanda">entrega: '+comandaData.formaEntrega.descripcion+'</span>'+
+            '<table class="table table-bordered">'+
+            '<thead><tr><th scope="col">Detalle</th><th scope="col">precio</th><th scope="col">imagen</th></tr></thead>'+
             '<tbody class="table-group-divider">'+imprimirMercaderias+
             '</tbody></table>'+
-            '<span class="badge text-bg-warning">total $'+comandaData.total+'</span>'+
+            '<span class="badge text-bg-success">TOTAL $'+comandaData.total+'</span>'+
           '</div>' +
         '</div>'
         )

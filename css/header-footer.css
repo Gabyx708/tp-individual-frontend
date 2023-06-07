@@ -4,6 +4,7 @@ header {
   align-items: center;
   align-items: center;
   background-color: var(--color-header);
+  height:100%;
   width: 100%;
 }
 
@@ -17,7 +18,7 @@ header div {
 
 
 header #icono {
-  width: 100px;
+  width: 50px;
   margin-right: 10px;
 }
 
@@ -36,7 +37,7 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 15pt;
+  font-size: 13pt;
 }
 
 li a:hover {

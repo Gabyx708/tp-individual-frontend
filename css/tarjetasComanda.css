@@ -11,7 +11,7 @@ ul {
 
 .tarjetaComanda{
  width: 70%;
- margin-bottom: 10%;
+ margin: 10%;
 }
 
 
@@ -33,4 +33,14 @@ ul {
 
 .table{
   text-align: center;
+}
+
+.label-comanda{
+  margin-bottom: 20px;
+  font-family: "Roboto";
+  padding: 0%;
+  border-radius: 20px;
+  float: left;
+  margin-left: 20px;
+  background-color: var(--color-header);
 }

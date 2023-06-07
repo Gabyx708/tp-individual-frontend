@@ -27,3 +27,51 @@
     margin-left: auto;
     margin-right: auto ;
 }
+
+.total-comanda{
+    font-weight: bold;
+    background-color: var(--color-header);
+    font-size: 17pt;
+    float: right;
+    padding: 1%;
+    border-radius: 10px;
+}
+
+#botones-container{
+    display: inline-flex;
+}
+
+#forma-entrega-container{
+    font-size: 15pt;
+    float: right;
+    display: flex;
+    align-items: center;
+}
+
+#forma-entrega{
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 10px;
+    border: 2px solid;
+}
+
+#forma-entrega option{
+    padding: 5%;
+}
+
+#options-container{
+    margin-left: 400px;
+    display: inline-flex;
+}
+
+#options-container button{
+    margin-left: 10px;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+    transition: all 1s;
+}
+
+#options-container button:hover{
+    color: black;
+}
