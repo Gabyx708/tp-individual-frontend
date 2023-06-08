@@ -47,11 +47,46 @@ li a:hover {
 
 footer {
   text-align: center;
-  position: fixed;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  padding: 2%;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 100px;
-  background-color: var(--color-header);
+  height: 100%;
+  color: white;
+  background-color: var(--color-footer);
   padding: 10px;
+}
+
+footer div hr{
+  width: 50%;
+}
+
+footer div{
+  text-align: left;
+  padding: 1%;
+}
+
+footer div iframe{
+  border-radius: 5px;
+}
+
+
+.container-contacto a{
+  text-decoration: none;
+  color: white;
+  width: 100%;
+  display: block;
+  margin: 2%;
+  padding: 1%;
+  transition: all 0.3s;
+}
+
+.container-contacto a:hover{
+  color: var(--color-header);
+}
+
+.container-contacto a i{
+  margin-left: 15px;
 }

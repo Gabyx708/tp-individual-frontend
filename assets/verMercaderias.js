@@ -9,11 +9,10 @@ import mercaderiaDetalle from '../components/cardMercaderiaDetalle.js';
 let allMercaderias = await Mercaderia.Get();
 
 let section = document.getElementById("menu");
-const mercaderiaInfo = document.querySelectorAll('.mercaderia-item');
 const btnConfirmarPedido = document.getElementById('btn-pedido');
-const btnsMercaderia = document.getElementsByClassName('btn-detalle');
 const modal = document.getElementById("modal-container");
 const modalMercaderia = document.getElementById("modal-mercaderia");
+const inputBusqueda = document.getElementById("input-busqueda");
 
 //mercaderias del pedido
 let pedidoMercaderia = [];
@@ -38,6 +37,7 @@ tipos.forEach(button => {
 
   });
 })
+
 
 
 //asignar evento click a todos los botones
@@ -67,6 +67,44 @@ section.addEventListener("click", async (e) => {
     });
   }
 });
+
+
+//logica busqueda nombre
+inputBusqueda.addEventListener('input',async()=>{
+
+  let nombre = inputBusqueda.value.trim();   
+  section.innerHTML = "";
+  allMercaderias = await Mercaderia.ByNombre(nombre);
+  
+  allMercaderias.forEach(mercaderia => {
+    section.innerHTML += mercaderiaCard(mercaderia);
+});
+
+});
+
+//logica de orden
+let ordenAsc = document.getElementById("orden-asc");
+ordenAsc.addEventListener('click',async(e)=>{
+
+  e.preventDefault();
+  section.innerHTML = "";
+  allMercaderias = await Mercaderia.ByOrden("asc");
+  
+  allMercaderias.forEach(mercaderia => {
+    section.innerHTML += mercaderiaCard(mercaderia);
+});
+})
+
+let ordenDesc = document.getElementById("orden-desc");
+ordenDesc.addEventListener('click',async()=>{
+
+  section.innerHTML = "";
+  allMercaderias = await Mercaderia.ByOrden("desc");
+  
+  allMercaderias.forEach(mercaderia => {
+    section.innerHTML += mercaderiaCard(mercaderia);
+});
+})
 
 
 btnConfirmarPedido.addEventListener('click',async e =>{
