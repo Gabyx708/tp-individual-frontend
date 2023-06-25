@@ -8,7 +8,7 @@ export default function mercaderiaCard(mercaderiaData){
     <div class="card-body">
       <h5 class="card-title">${mercaderiaData.nombre}</h5>
       <p class="card-text">${mercaderiaData.tipo.descripcion}</p>
-      <h4 class="card-text">$${mercaderiaData.precio}</h4>
+      <h4 class="card-text text-success">$${mercaderiaData.precio}</h4>
       <button class="btn btn-success btn-mercaderia"  mercaderia-id="${mercaderiaData.id}" >agregar</button>
       <button class="btn btn-warning  btn-detalle text-light"  mercaderia-id="${mercaderiaData.id}" >ver detalle</button>
     </div>

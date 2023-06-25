@@ -27,8 +27,35 @@ section{
     float: right;
 }
 
-thead,
-tbody{
-    text-align: left;
+thead{
+    text-align: center;
 }
 
+
+
+.total-comanda{
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid var(--bs-green);
+    background: linear-gradient(to right, var(--bs-green) 70%, white 30%);
+    width: 18%;
+    float: right;
+    padding: 1%;
+    border-radius: 5px;
+}
+
+.total-comanda p{
+    font-size: 15pt;
+    margin-bottom: 0;
+}
+
+.precio-tabla{
+    font-weight: bold;
+    text-align: end;
+}
+
+.detalle-comida{
+    text-align: left;
+}

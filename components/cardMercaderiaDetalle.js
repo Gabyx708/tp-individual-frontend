@@ -13,7 +13,7 @@ export default function mercaderiaDetalle(mercaderia){
         <label>PREPARACION:</label>
         <p class="card-text">${mercaderia.preparacion}</p>
         <label>PRECIO:</label>
-        <h4 class="card-text">$${mercaderia.precio}</h4>
+        <h4 class="card-text text-success">$${mercaderia.precio}</h4>
         <button class="btn btn-warning" id="close" >cerrar</button>
       </div>
       </div>

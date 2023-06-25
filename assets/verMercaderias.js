@@ -46,7 +46,7 @@ section.addEventListener('click', async (e) =>{
 
     const mercaderiaId = e.target.getAttribute('mercaderia-id');
     pedidoMercaderia.push(mercaderiaId);
-    btnConfirmarPedido.innerHTML = `<i class="fa-solid fa-basket-shopping"></i>Pedido ${pedidoMercaderia.length}`;
+    btnConfirmarPedido.innerHTML = `<i class="fa-solid fa-basket-shopping"></i>(${pedidoMercaderia.length})`;
     console.log(pedidoMercaderia);
   }
 })

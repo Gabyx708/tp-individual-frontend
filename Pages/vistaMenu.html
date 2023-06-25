@@ -20,7 +20,7 @@
   </head>
   <body>
     <div id="header"></div>
-    <h1>Nuestro Menu</h1>
+    
     
     <div class="modal-container" id="modal-container">
       <div class="modal-mercaderia" id="modal-mercaderia">
@@ -43,8 +43,8 @@
         </div>
 
         <div id="options-container">
-          <button id="close-pedido" class="btn bg-info">cerrar</button>
-          <button id="cancel-pedido" class="btn bg-danger">cancelar</button>
+          <button id="close-pedido" class="btn bg-warning">cerrar</button>
+          <button id="cancel-pedido" class="btn bg-warning">cancelar</button>
           <button id="ok-pedido" class="btn bg-success">confirma pedido</button>
         </div>
         
@@ -54,9 +54,12 @@
 </div>
 
     <div class="menu-contenedor">
-
+      <div id="title-menu">
+        <h1>Nuestro Menu</h1>
+      </div>
+      
       <ul class="menu-options">
-        <li><input type="text" class="busqueda-nombre" placeholder="buscar..." id="input-busqueda"></li>
+        <li><input type="text" class="busqueda-nombre" placeholder="  Buscar..." id="input-busqueda"></li>
         <li><a href="" id="orden-asc"><i class="fa-solid fa-arrow-up"></i></a></li>
         <li><a href="javascript:void(0)" id="orden-desc"><i class="fa-solid fa-arrow-up rotate"></i></a></li>
         <li><a class="tipo">Todos</a></li>
@@ -69,18 +72,12 @@
         <li><a class="tipo" value="7">Ensalada</a></li>
         <li><a class="tipo" value="8">Bebidas</a></li>
         <li><a class="tipo" value="9">Cervez Artesanal</a></li>
-        <li><a class="tipo" value="10">Postres</a></li>       
+        <li><a class="tipo" value="10">Postres</a></li>  
+        <li><button id="btn-pedido" ><i class="fa-solid fa-basket-shopping"></i></button></li>     
       </ul>
-
-      <div class="btn-pedido">
-        <button id="btn-pedido" >
-          <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-      </div>
       
     </div>
 
-    
     <section id="menu">
     </section>
 

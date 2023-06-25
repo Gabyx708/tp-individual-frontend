@@ -28,7 +28,7 @@ Platillos.forEach(plato => {
             ${pintarEnPantalla}
           </tbody>
         </table>
-        <span class="total-comanda">TOTAL:  $${precio}</span>
+        <span class="total-comanda"><p class="text-white">total a pagar:<p><p>$${precio}<p></span>
       </div>
     </div>
   `;
