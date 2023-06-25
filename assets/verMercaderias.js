@@ -50,6 +50,7 @@ section.addEventListener('click', async (e) => {
     //funciona sonido
     function playSonido() {
       audio.currentTime = 0;
+      audio.volume = 0.2;
       audio.play();
     }
 
