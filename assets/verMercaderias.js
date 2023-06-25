@@ -10,6 +10,7 @@ let allMercaderias = await Mercaderia.Get();
 
 let section = document.getElementById("menu");
 const btnConfirmarPedido = document.getElementById('btn-pedido');
+const btnPedidoAnimar = document.getElementById("btn-pedido-animar");
 const modal = document.getElementById("modal-container");
 const modalMercaderia = document.getElementById("modal-mercaderia");
 const inputBusqueda = document.getElementById("input-busqueda");
@@ -41,8 +42,22 @@ tipos.forEach(button => {
 
 
 //asignar evento click a todos los botones
-section.addEventListener('click', async (e) =>{
+section.addEventListener('click', async (e) => {
   if (e.target.classList.contains('btn-mercaderia')) {
+
+    let audio = document.getElementById('audioMoney');
+
+    //funciona sonido
+    function playSonido() {
+      audio.currentTime = 0;
+      audio.play();
+    }
+
+    btnPedidoAnimar.classList.add('animate__animated', 'animate__bounce');
+    playSonido();
+    setTimeout(function () {
+      btnPedidoAnimar.classList.remove('animate__animated', 'animate__bounce');
+    }, 1000);
 
     const mercaderiaId = e.target.getAttribute('mercaderia-id');
     pedidoMercaderia.push(mercaderiaId);
@@ -50,6 +65,8 @@ section.addEventListener('click', async (e) =>{
     console.log(pedidoMercaderia);
   }
 })
+
+
 
 
 section.addEventListener("click", async (e) => {
@@ -108,7 +125,7 @@ ordenDesc.addEventListener('click',async()=>{
 
 
 btnConfirmarPedido.addEventListener('click',async e =>{
-  
+
   let modalPedidoContainer = document.getElementById("modal-container-pedido");
   let modalPedido = document.getElementById("modal-pedido");
   let closePedido = document.getElementById("close-pedido");
