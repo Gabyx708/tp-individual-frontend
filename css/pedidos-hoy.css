@@ -59,3 +59,8 @@ thead{
 .detalle-comida{
     text-align: left;
 }
+
+.imagenComida{
+    height: 50px;
+    object-fit: cover;
+}
