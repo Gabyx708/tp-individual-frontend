@@ -122,3 +122,10 @@ section{
   font-size: 12pt;
   padding: 3%;
 }
+
+
+/* mostrar boton activo */
+.activo{
+  background-color: var(--color-hover);
+  box-shadow: 0 0 10px var(--color-hover);
+}

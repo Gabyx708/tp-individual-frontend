@@ -59,11 +59,38 @@ return result;
 
 }
 
+const getMercaderiaFiltrada = async (order, tipo, nombre) => {
+    let urlQuery = `${urlAllMercaderias}?`;
+    let result;
+    
+    if (tipo != null) {
+        urlQuery += `tipo=${tipo}&`;
+    }
+
+    if (nombre != null) {
+        urlQuery += `nombre=${nombre}&`;
+    }
+
+    if (order != null) {
+        urlQuery += `orden=${order}`;
+    }
+
+    let response = await fetch(urlQuery);
+    if (response.ok) {
+        result = await response.json();
+    }
+    
+    return result;
+
+};
+  
+
 const Mercaderia = {
     Get : getMercaderias,
     ById : getById,
     ByNombre : getMercaderiasByNombre,
-    ByOrden : getMercaderiaOrden
+    ByOrden : getMercaderiaOrden,
+    getMercaderiaFiltrada : getMercaderiaFiltrada
 }
 
 export default Mercaderia;

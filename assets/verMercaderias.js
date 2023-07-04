@@ -13,12 +13,20 @@ const btnConfirmarPedido = document.getElementById('btn-pedido');
 const btnPedidoAnimar = document.getElementById("btn-pedido-animar");
 const modal = document.getElementById("modal-container");
 const modalMercaderia = document.getElementById("modal-mercaderia");
+
+//variables para filtrado
 const inputBusqueda = document.getElementById("input-busqueda");
+let ordenAsc = document.getElementById("orden-asc");
+let ordenDesc = document.getElementById("orden-desc");
+let tipo;
+let nombre;
+let orden;
+
 
 //mercaderias del pedido
 let pedidoMercaderia = [];
 
-//pintar las tarjetas en pantalla
+//pintar todas las tarjetas de mercaderias en pantalla
 allMercaderias.forEach(mercaderia => {
     section.innerHTML += mercaderiaCard(mercaderia);
 });
@@ -30,18 +38,26 @@ tipos.forEach(button => {
     e.preventDefault();
     section.innerHTML = '';
     allMercaderias = [];
-    allMercaderias = await Mercaderia.Get(button.getAttribute("value"));
 
-    allMercaderias.forEach(mercaderia => {
+    tipos.forEach(btn => {
+      btn.classList.remove('activo');
+    });
+
+    button.classList.add("activo");
+    tipo = button.getAttribute("value");
+  
+  allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre)
+
+     allMercaderias.forEach(mercaderia => {
       section.innerHTML += mercaderiaCard(mercaderia);
-  });
+   });
 
   });
 })
 
 
 
-//asignar evento click a todos los botones
+//asignar evento click a todos los botones de agregar
 section.addEventListener('click', async (e) => {
   if (e.target.classList.contains('btn-mercaderia')) {
 
@@ -69,7 +85,7 @@ section.addEventListener('click', async (e) => {
 
 
 
-
+//logica modal mercaderia
 section.addEventListener("click", async (e) => {
   if (e.target.classList.contains("btn-detalle")) {
     const mercaderiaId = e.target.getAttribute("mercaderia-id");
@@ -87,12 +103,14 @@ section.addEventListener("click", async (e) => {
 });
 
 
+
+
 //logica busqueda nombre
 inputBusqueda.addEventListener('input',async()=>{
 
-  let nombre = inputBusqueda.value.trim();   
+  nombre = inputBusqueda.value.trim();   
   section.innerHTML = "";
-  allMercaderias = await Mercaderia.ByNombre(nombre);
+  allMercaderias = await Mercaderia.getMercaderiaFiltrada(null,null,nombre);
   
   allMercaderias.forEach(mercaderia => {
     section.innerHTML += mercaderiaCard(mercaderia);
@@ -101,28 +119,42 @@ inputBusqueda.addEventListener('input',async()=>{
 });
 
 //logica de orden
-let ordenAsc = document.getElementById("orden-asc");
-ordenAsc.addEventListener('click',async(e)=>{
 
-  e.preventDefault();
-  section.innerHTML = "";
-  allMercaderias = await Mercaderia.ByOrden("asc");
-  
-  allMercaderias.forEach(mercaderia => {
-    section.innerHTML += mercaderiaCard(mercaderia);
+
+
+ordenAsc.addEventListener('click',async () => {
+
+  if (ordenDesc.classList.contains('activo')) {
+    orden = "asc";
+    allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre)
+
+    allMercaderias.forEach(mercaderia => {
+     section.innerHTML += mercaderiaCard(mercaderia);
+  });}
+
+
+
+  if (!ordenAsc.classList.contains('activo')) {
+    ordenAsc.classList.add('activo');
+    ordenDesc.classList.remove('activo');
+  }
 });
-})
 
-let ordenDesc = document.getElementById("orden-desc");
-ordenDesc.addEventListener('click',async()=>{
+ordenDesc.addEventListener('click',async () => {
 
-  section.innerHTML = "";
-  allMercaderias = await Mercaderia.ByOrden("desc");
-  
-  allMercaderias.forEach(mercaderia => {
-    section.innerHTML += mercaderiaCard(mercaderia);
+      orden = "desc";
+      allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre)
+
+      allMercaderias.forEach(mercaderia => {
+       section.innerHTML += mercaderiaCard(mercaderia);
+      });
+
+  if (!ordenDesc.classList.contains('activo')) {
+    ordenDesc.classList.add('activo');
+    ordenAsc.classList.remove('activo');
+  }
 });
-})
+
 
 
 btnConfirmarPedido.addEventListener('click',async e =>{
