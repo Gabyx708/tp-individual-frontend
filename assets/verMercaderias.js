@@ -110,7 +110,7 @@ inputBusqueda.addEventListener('input',async()=>{
 
   nombre = inputBusqueda.value.trim();   
   section.innerHTML = "";
-  allMercaderias = await Mercaderia.getMercaderiaFiltrada(null,null,nombre);
+  allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre);
   
   allMercaderias.forEach(mercaderia => {
     section.innerHTML += mercaderiaCard(mercaderia);
@@ -124,13 +124,12 @@ inputBusqueda.addEventListener('input',async()=>{
 
 ordenAsc.addEventListener('click',async () => {
 
-  if (ordenDesc.classList.contains('activo')) {
-    orden = "asc";
-    allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre)
-
+    let orden = "asc";
+    allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre);
+    section.innerHTML = "";
     allMercaderias.forEach(mercaderia => {
      section.innerHTML += mercaderiaCard(mercaderia);
-  });}
+  });
 
 
 
@@ -142,12 +141,13 @@ ordenAsc.addEventListener('click',async () => {
 
 ordenDesc.addEventListener('click',async () => {
 
-      orden = "desc";
-      allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre)
+    let orden = "desc";
+    section.innerHTML = "";
+    allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre);
 
-      allMercaderias.forEach(mercaderia => {
-       section.innerHTML += mercaderiaCard(mercaderia);
-      });
+    allMercaderias.forEach(mercaderia => {
+     section.innerHTML += mercaderiaCard(mercaderia);
+  });
 
   if (!ordenDesc.classList.contains('activo')) {
     ordenDesc.classList.add('activo');

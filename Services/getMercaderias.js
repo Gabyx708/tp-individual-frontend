@@ -17,35 +17,6 @@ const getMercaderias = async (tipo) => {
         return result;
 }
 
-const getMercaderiasByNombre = async (nombre) => {
-    let result = []
-    let url = urlAllMercaderias;
-
-    if(nombre != null){
-        url = `${urlAllMercaderias}?nombre=${nombre}`
-    }
-
-    let response = await fetch(url)
-            if(response.ok){
-                result = await response.json();
-            }   
-        return result;
-}
-
-const getMercaderiaOrden = async (orden) => {
-    let result = []
-    let url = urlAllMercaderias;
-
-    if(orden != null){
-        url = `${urlAllMercaderias}?orden=${orden}`
-    }
-
-    let response = await fetch(url)
-            if(response.ok){
-                result = await response.json();
-            }   
-        return result;
-}
 
 const getById = async (id) =>{
     let result = null;
@@ -79,7 +50,7 @@ const getMercaderiaFiltrada = async (order, tipo, nombre) => {
     if (response.ok) {
         result = await response.json();
     }
-    
+    console.log(urlQuery)
     return result;
 
 };
@@ -88,8 +59,6 @@ const getMercaderiaFiltrada = async (order, tipo, nombre) => {
 const Mercaderia = {
     Get : getMercaderias,
     ById : getById,
-    ByNombre : getMercaderiasByNombre,
-    ByOrden : getMercaderiaOrden,
     getMercaderiaFiltrada : getMercaderiaFiltrada
 }
 
