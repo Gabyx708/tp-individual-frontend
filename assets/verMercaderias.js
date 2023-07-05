@@ -4,6 +4,7 @@ import MercaderiaDetalle from '../components/cardMercaderiaDetalle.js';
 import mercaderiaCard from '../components/cardMercaderia.js';
 import Pedido from '../Services/postComanda.js';
 import mercaderiaDetalle from '../components/cardMercaderiaDetalle.js';
+import MensajeNotFound from '../components/notFound.js';
 
 
 let allMercaderias = await Mercaderia.Get();
@@ -47,6 +48,10 @@ tipos.forEach(button => {
     tipo = button.getAttribute("value");
   
   allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre)
+
+  if(allMercaderias == ""){
+    section.innerHTML += MensajeNotFound();
+}
 
      allMercaderias.forEach(mercaderia => {
       section.innerHTML += mercaderiaCard(mercaderia);
@@ -112,6 +117,10 @@ inputBusqueda.addEventListener('input',async()=>{
   section.innerHTML = "";
   allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre);
   
+  if(allMercaderias == ""){
+    section.innerHTML += MensajeNotFound();
+  }
+
   allMercaderias.forEach(mercaderia => {
     section.innerHTML += mercaderiaCard(mercaderia);
 });
@@ -126,6 +135,11 @@ ordenAsc.addEventListener('click',async () => {
 
     let orden = "asc";
     allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre);
+
+    if(allMercaderias == ""){
+      section.innerHTML += MensajeNotFound();
+  }
+
     section.innerHTML = "";
     allMercaderias.forEach(mercaderia => {
      section.innerHTML += mercaderiaCard(mercaderia);
@@ -144,6 +158,11 @@ ordenDesc.addEventListener('click',async () => {
     let orden = "desc";
     section.innerHTML = "";
     allMercaderias = await Mercaderia.getMercaderiaFiltrada(orden,tipo,nombre);
+
+    if(allMercaderias == ""){
+      section.innerHTML += MensajeNotFound();
+  }
+
 
     allMercaderias.forEach(mercaderia => {
      section.innerHTML += mercaderiaCard(mercaderia);
@@ -168,7 +187,14 @@ btnConfirmarPedido.addEventListener('click',async e =>{
 
   if(pedidoMercaderia.length == 0)
   {
-    alert("primero tienes que pedir algo")
+    Swal.fire({
+      title: 'Ups!',
+      text: 'debes agregar algo al carrito primero',
+      icon: 'warning',
+      iconColor: "#FFBC0D",
+      confirmButtonColor: "#FFBC0D",
+      confirmButtonText: 'entendido'
+    })
   }else{
 
     //hacer visible
@@ -199,8 +225,28 @@ btnConfirmarPedido.addEventListener('click',async e =>{
 
         let entregaElegida = formaEntrega.value;
         const respuesta = await Pedido.Pedir(pedidoMercaderia,entregaElegida);
-        alert("pedido realizado! codigo: "+respuesta.id);
-        location.reload();
+        let identificador = await respuesta.id;
+        modalPedidoContainer.style.display = "none";
+        const Toast = await Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'success',
+          title: 'pedido realizado exitosamente'
+        })
+
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
     })
    
   }
