@@ -208,11 +208,23 @@ btnConfirmarPedido.addEventListener('click',async e =>{
 
     cancelPedido.addEventListener("click",()=>{
         
-      var opcion = confirm("estas a punto de cancelar tu pedido! estas seguro?");
+      modalPedidoContainer.style.display = "none";
 
-      if(opcion === true){
-          location.reload();
-      }
+      Swal.fire({
+        title: 'estas seguro de querer cancelar el pedido?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#FFBC0D',
+        cancelButtonColor: 'green',
+        cancelButtonText: 'No, seguir pidiendo',
+        confirmButtonText: 'si , cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+              location.reload();
+        }else{
+          modalPedidoContainer.style.display = "flex";
+        }
+      })
 
     });
 
@@ -227,26 +239,19 @@ btnConfirmarPedido.addEventListener('click',async e =>{
         const respuesta = await Pedido.Pedir(pedidoMercaderia,entregaElegida);
         let identificador = await respuesta.id;
         modalPedidoContainer.style.display = "none";
-        const Toast = await Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-        
-        Toast.fire({
-          icon: 'success',
-          title: 'pedido realizado exitosamente'
-        })
 
-        setTimeout(() => {
-          location.reload();
-        }, 3000);
+        Swal.fire({
+          title:'PEDIDO CONFIRMADO',
+          text:'su pedido ah sido realizado con exito',
+          icon:'success',
+          confirmButtonColor: "#FFBC0D"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            location.reload();
+          }
+        });
+
+        
     })
    
   }

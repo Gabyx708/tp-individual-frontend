@@ -46,3 +46,7 @@ main .card .btn:hover{
   background-color: green;
   border: 2px green;
 }
+
+.card-body{
+  width: 100%;
+}
