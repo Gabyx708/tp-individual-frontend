@@ -11,10 +11,11 @@
 
 
 main{
+  padding: 3%;
     display: grid;
     grid-template-columns: repeat(4,1fr);
     justify-content: center;
-    margin-bottom: 200px;
+    margin-bottom: 150px;
     height: 100%;
 }
 
@@ -35,11 +36,13 @@ main .card img{
 }
 
 main .card .btn{
+  font-weight: bold;
   transition: all 0.3s ease;
-  transition-delay: 0.2s;
+  padding: 5%;
 }
 
 main .card .btn:hover{
   color: black;
   background-color: green;
+  border: 2px green;
 }
